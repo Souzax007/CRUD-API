@@ -8,10 +8,5 @@
         "nome": "Maria Oliveira",
         "email": "maria.oliveira@example.com",
         "password": "senha123"
-    },
-    {
-        "nome": "marcos.souza",
-        "email": "marcos@albesbrasil.com.br",
-        "password": "senha123"
     }
 ]
