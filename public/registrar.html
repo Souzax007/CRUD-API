@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>registrar</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <form>
         <div class="container">
-            <h1>Login</h1>
+            <h1>Registrar</h1>
             <div class="input-group">
                 <label for="name">nome <span>*</span></label>
                 <input type="text" name="name" id="name">
@@ -17,20 +17,19 @@
                 <input type="email" name="email" id="email">
                 <label for="password">password <span>*</span></label>
                 <input type="password" name="password" id="password">
-                <input type="button" value="Entrar" onclick="login()" id="submit">
-                <input type="button" value="Registrar" onclick="window.location.href='registrar.html'" id="submit">
+                <input type="button" value="Registrar" onclick="registrar()" id="submit">
             </div>
                 <p id="message"></p>
         </div>
     </form>
 
     <script>
-        function login(){
+        function registrar(){
             const name = document.getElementById("name").value;
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
 
-            fetch("http://localhost:9090/login",{
+            fetch("http://localhost:9090/registrar",{
                 method:"POST",
                 headers:{
                     "Content-type":"application/json"
@@ -43,7 +42,7 @@
             })
                 .then(res => res.json())
                 .then(data => {
-
+                    
                     const message = document.getElementById("message");
                     message.className = data.success ? "message-success" : "message-error";
                     message.innerText = data.success ? data.message : "Atenção: " + data.message;
@@ -53,6 +52,7 @@
                             window.location.href = data.Location;
                         }, 2000);
                     }
+
                 })
                 .catch(error => {
                     console.log("Erro completo:", error);

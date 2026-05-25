@@ -1,12 +1,27 @@
 [
-    {
-        "nome": "João Silva",
-        "email": "joao.silva@example.com",
-        "password": "senha123"
-    },
-    {
-        "nome": "Maria Oliveira",
-        "email": "maria.oliveira@example.com",
-        "password": "senha123"
-    }
+  {
+    "nome": "João Silva",
+    "email": "joao.silva@example.com",
+    "password": "senha123"
+  },
+  {
+    "nome": "Maria Oliveira",
+    "email": "maria.oliveira@example.com",
+    "password": "senha123"
+  },
+  {
+    "nome": "baixado",
+    "email": "baixado@gmail.com",
+    "password": "senha123"
+  },
+  {
+    "nome": "Marcos",
+    "email": "marcossouzagg17@gmail.com",
+    "password": "senha123"
+  },
+  {
+    "nome": "neves",
+    "email": "neves@gmail.com",
+    "password": "senha123"
+  }
 ]

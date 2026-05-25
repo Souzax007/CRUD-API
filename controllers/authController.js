@@ -54,7 +54,43 @@ function logout(req, res) {
     });
 }
 
+function registrar(req, res) {
+    const { name, email, password } = req.body;
+
+    if (!name || !email || !password) {
+        return res.json({
+            success: false,
+            message: "Preencha todos os campos"
+        });
+    }
+
+    fs.readFile("db/usuarios.json", "utf-8")
+        .then(data => {
+            const users = JSON.parse(data);
+
+            const existingUser = users.find(user => user.email === email);
+            if (existingUser) {
+                return res.json({
+                    success: false,
+                    message: "Email já registrado"
+                });
+            }
+
+            const newUser = { nome: name, email, password };
+            users.push(newUser);
+
+            return fs.writeFile("db/usuarios.json", JSON.stringify(users, null, 2));
+        })
+        .then(() => {
+            res.json({
+                success: true,
+                message: "Registro bem-sucedido",
+                Location: "/login"
+            });
+        })
+}
 module.exports = { 
     login, 
-    logout 
+    logout,
+    registrar
 };
