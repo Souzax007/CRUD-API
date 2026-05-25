@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="name">nome</label>
+        <input type="text" name="name" id="name">
+        <label for="email">email</label>
+        <input type="email" name="email" id="email">
+        <label for="password">password</label>
+        <input type="password" name="password" id="password">
+        <input type="button" value="Submit" onclick="login()">
+    </form>
+
+    <script>
+        function login(){
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            fetch("http://localhost:9090/login",{
+                method:"POST",
+                headers:{
+                    "Content-type":"application/json"
+                },
+                body: JSON.stringify({
+                    name:name,
+                    email:email,
+                    password:password
+                })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("Sucesso: " + data.message);
+                        window.location.href = data.Location;
+                    } else {
+                        alert("Erro: " + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.log("Erro completo:", error);
+                    alert("servidor caiu");
+                })
+        }
+    </script>
+</body>
+</html>
