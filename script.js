@@ -1,49 +1,29 @@
 const express = require("express");
-const fs = require("fs").promises;
 const cors = require("cors");
+const session = require("express-session");
+
+const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 
 app.use(cors());
+
 app.use(express.json());
 
-app.post("/login", async (req, res) => {
-    const { name, email, password } = req.body;
+app.use(express.static("public"));
 
-    try {
-        //ler json
-        const data = await fs.readFile("db/usuarios.json", "utf-8");
-
-        //converter json para array
-        const users = JSON.parse(data);
-
-        const usuario = users.find(user =>
-            user.nome === name &&
-            user.email === email &&
-            user.password === password
-        )
-
-        if (usuario) {
-            return res.json({
-                success: true,
-                message: "Login OK",
-                Location: "main.html"
-            });
-        } else {
-            return res.json({
-                success: false,
-                message: "Erro no login"
-            });
-        };
-    } catch (error) {
-        console.error("Erro ao ler o arquivo:", error);
-        return res.status(500).json({
-            success: false,
-            message: "Erro interno do servidor"
-        });
+// Configuração da sessão
+app.use(session({
+    secret: "meu-segredo",
+    resave: false,
+    saveUninitialized: false,
+    cookie: { 
+        secure:false,
+        maxAge: 60 * 60 * 1000 // 1 hora
     }
-    });
-    
+}));
+
+app.use(authRoutes);
 
 
 app.listen(9090, function () {

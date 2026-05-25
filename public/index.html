@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <form>
-        <label for="name">nome</label>
-        <input type="text" name="name" id="name">
-        <label for="email">email</label>
-        <input type="email" name="email" id="email">
-        <label for="password">password</label>
-        <input type="password" name="password" id="password">
-        <input type="button" value="Submit" onclick="login()">
-        <p id="message"></p>
+        <div class="container">
+            <h1>Login</h1>
+            
+            <label for="name">nome</label>
+            <input type="text" name="name" id="name">
+            <label for="email">email</label>
+            <input type="email" name="email" id="email">
+            <label for="password">password</label>
+            <input type="password" name="password" id="password">
+            <input type="button" value="Submit" onclick="login()" id="submit">
+            <p id="message"></p>
+        </div>
     </form>
 
     <script>
@@ -45,7 +50,7 @@
                             window.location.href = data.Location;
                         }, 2000);
                     } else {
-                        message.innerText = "Erro: " + data.message;
+                        message.innerText = "Atenção: " + data.message;
                     }
                 })
                 .catch(error => {
@@ -54,5 +59,6 @@
                 })
         }
     </script>
+    <script src="js/acao-login.js"></script>
 </body>
 </html>
