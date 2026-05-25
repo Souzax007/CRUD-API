@@ -4,10 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/nav.css">
 </head>
 <body>
-    <h1>hello world</h1>
-    <input type="button" value="Sair" id="logout" onclick="logout()">
+    <nav class="navbar">
+        <div class="logo">
+            <h1>Bem Vindo</h1>
+        </div>
+        
+        <div class="menu">
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Perfil</a></li>
+                <li><a href="#">Configurações</a></li>
+            </ul>
+        </div>
+
+        <div class="logout">
+            <button id="logout" onclick="logout()"> Sair</button> 
+        </div>
+    </nav>  
+        <h1>hello world</h1>
+
 
     <script>
         function logout() {

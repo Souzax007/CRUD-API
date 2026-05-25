@@ -10,15 +10,16 @@
     <form>
         <div class="container">
             <h1>Login</h1>
-            
-            <label for="name">nome</label>
-            <input type="text" name="name" id="name">
-            <label for="email">email</label>
-            <input type="email" name="email" id="email">
-            <label for="password">password</label>
-            <input type="password" name="password" id="password">
-            <input type="button" value="Submit" onclick="login()" id="submit">
-            <p id="message"></p>
+            <div class="input-group">
+                <label for="name">nome <span>*</span></label>
+                <input type="text" name="name" id="name">
+                <label for="email">email <span>*</span></label>
+                <input type="email" name="email" id="email">
+                <label for="password">password <span>*</span></label>
+                <input type="password" name="password" id="password">
+                <input type="button" value="Entrar" onclick="login()" id="submit">
+            </div>
+                <p id="message"></p>
         </div>
     </form>
 
@@ -43,14 +44,13 @@
                 .then(data => {
 
                     const message = document.getElementById("message");
+                    message.className = data.success ? "message-success" : "message-error";
+                    message.innerText = data.success ? data.message : "Atenção: " + data.message;
 
                     if (data.success) {
-                        message.innerText = data.message
                         setTimeout(() => {
                             window.location.href = data.Location;
                         }, 2000);
-                    } else {
-                        message.innerText = "Atenção: " + data.message;
                     }
                 })
                 .catch(error => {

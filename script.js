@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const session = require("express-session");
+const path = require("path");
 
 const authRoutes = require("./routes/authRoutes");
 
@@ -10,7 +11,8 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "private")));
 
 // Configuração da sessão
 app.use(session({
