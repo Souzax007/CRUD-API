@@ -3,18 +3,96 @@
     padding: 0;
     box-sizing: border-box;
 }
+:root {
+    --btn-primary: transparent;
+    --btn-primary-color: white;
+    --btn-primary-border: solid 1px white;
+    --btn-primary-hover: #989898;
+    --btn-primary-hover-color: rgb(38, 38, 38);
+    --btn-primary-hover-border: solid 1px #ffffff;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
     font-family: Arial, sans-serif;
+    background-image: url('https://wallpapercave.com/wp/wp4734315.jpg');
+    background-size: cover;        
+    background-position: center;  
+    background-repeat: no-repeat; 
+    background-attachment: fixed;  
 }
 .navbar {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    background-color: #333;
+    background-color: #948d8de5;
     overflow: hidden;
+    padding: 10px 20px;
 }
+#logout{
+    border: var(--btn-primary-border);
+    color: var(--btn-primary-color);
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: var(--btn-primary);
+}
+.menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .menu ul {
     display: flex;
     list-style: none;
     gap: 20px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    transition: color 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: solid 1px white;
+}
+.logo{
+    width: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#forca{
+    font-weight: bold;
+    background-color: #f12626;
+    color: #fff;
+    margin: 0;
+    padding: 8px 10px;
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    min-width: 90px;
+}
+
+.menu{
+    flex: 1;
+}
+
+.logout{
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+}
+
+#logout:hover,
+.nav-links li a:hover {
+    background-color: var(--btn-primary-hover);
+    color: var(--btn-primary-hover-color);
+    border: var(--btn-primary-hover-border);
 }

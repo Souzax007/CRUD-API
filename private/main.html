@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
 <body>
     <nav class="navbar">
         <div class="logo">
-            <h1>Bem Vindo</h1>
+            <h1 id="forca">100%</h1>
         </div>
         
         <div class="menu">
@@ -24,9 +24,7 @@
             <button id="logout" onclick="logout()"> Sair</button> 
         </div>
     </nav>  
-        <h1>hello world</h1>
-
-
+    
     <script>
         function logout() {
             fetch("/logout", {
@@ -41,6 +39,33 @@
             })
             .catch(err => console.error(err));
         }
+
+        function contador(){
+            const elem = document.getElementById("forca");
+            let i = 0;
+            elem.innerText = "0%";
+            elem.style.color = "#fff";
+
+            const timer = setInterval(() => {
+                if (i >= 100) {
+                    clearInterval(timer);
+                    return;
+                }
+
+                i++;
+                elem.innerText = i + "%";
+
+                if (i >= 90) {
+                    elem.style.color = "#c62828";
+                } else if (i >= 70) {
+                    elem.style.color = "#ef6c00";
+                } else {
+                    elem.style.color = "#fff";
+                }
+            }, 200);
+        }
+
+        contador();
     </script>
 </body>
 </html>
